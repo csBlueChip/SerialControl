@@ -1,0 +1,12 @@
+{
+  "name": "SerialControl",
+  "maintainer": "csBlueChip",
+  "websiteURL": "https://github.com/csBlueChip/SerialControl",
+  "email": "nospam@example.com",
+
+  "platforms": [
+  ],
+
+  "tools": [
+   ],
+}
