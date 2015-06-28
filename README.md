@@ -1,5 +1,5 @@
 # Serial Command & Control System
-This library implements an intuitive command system for controlling your Arduino from your PC via the built-in Serial Monitor or an external terminal emulator ...It is simple and quick to configure; implements a full HELP system; and comes with a simple example which has a set of commands to remotely control the brightness of an LED.
+This library implements an intuitive command system for controlling your Arduino from your PC via the built-in Serial Monitor or an external terminal emulator ...It is simple and quick to configure; implements a full HELP system; and comes with a simple example which has a set of commands to remotely control the brightness of an LED ...The code is well structured and commented throughout to make forking easy - if you come up with something cool, please do a pull request :)
 
 ## Version History
 1.00 First release
