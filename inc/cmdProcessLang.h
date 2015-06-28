@@ -17,8 +17,9 @@
 	char*  txtListCmds  = "List available commands";
 	char*  txtCmdHelp   = " <command> : Command specific help";
 	char*  txtTooLong   = "Command too long";
-	char*  txtSetupOK   = "Command system ready.";
-	char*  txtSetupFail = "Command system failed.";
+	char*  txtLibName   = "SerialCommand";
+	char*  txtSetupOK   = "Ready...";
+	char*  txtSetupFail = "setup failed!";
 #else
 #	errror Language not defined
 #endif
