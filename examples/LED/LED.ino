@@ -114,11 +114,7 @@ int  ledPulse (int argc,  char* argv[])
 
     // If there are "two" arguments, we assume the second is a valid number
     // (as an ASCII string) and we convert it to an integer
-<<<<<<< HEAD
     if (argc == 2)  speed = atoi(argv[2]);
-=======
-    if (argc == 2)  speed = (argc == 2) ;
->>>>>>> 56bed0cb04a98b52195cd9ad3cb23788e39549f7
     
     Serial.print("Pulsing, please wait: ");
 
