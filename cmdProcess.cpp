@@ -4,7 +4,7 @@
 // Includes
 //
 #include "cmdProcess.h"
-#include "cmdProcessLang.h"
+#include "inc/cmdProcessLang.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -65,6 +65,12 @@ bool  cmdSetup (cmd_t* list,  int max)
 	isSetup = cmd && argList && argPtr;
 
 	// Announce the system
+	Serial.print(txtLibName);
+	Serial.print(" v");
+	Serial.print(CMDP_VERMIN, DEC);
+	Serial.print(".");
+	Serial.print(CMDP_VERMAJ, DEC);
+	Serial.print(" ");
 	Serial.println( (isSetup) ? txtSetupOK : txtSetupFail );
 	
 	return isSetup;
