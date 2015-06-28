@@ -1,7 +1,9 @@
 # Serial Command & Control System
-This library implements an intuitive command system for controlling your Arduino via COM port on your PC. Most people will probably use the built-in Serial Monitor in the Arduino IDE, but any other (such as PuTTY) is equally as valid.  It is simple to configure, implements a full HELP system and comes with a simple example to remotely control control and LED.
+This library implements an intuitive command system for controlling your Arduino from your PC. Most people will probably use the built-in Serial Monitor in the Arduino IDE, but any other programs (such as PuTTY) are equally as valid.
+It is simple to configure, implements a full HELP system and comes with a simple example to remotely control control and LED.
 
-## Version - 1.00
+## Version History
+1.00 First release
 
 ## Installation
 1. Navigate to the [Releases](https://github.com/csBlueChip/SerialControl/releases) page.
@@ -24,5 +26,5 @@ Please contribute to this project:
 - [csBlueChip](https://github.com/csBlueChip) : Author
 
 ## Copyright
-Copyright 2015
-Release under the MIT licence ..."Free as in free"
+Copyright 2015.
+Released under the MIT licence ..."Free as in free"
