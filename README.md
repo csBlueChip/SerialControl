@@ -3,6 +3,7 @@ This library implements an intuitive command system for controlling your Arduino
 
 ## Version History
 1.1 Clear command buffer at startup
+
 1.0 First release
 
 ## Installation
@@ -13,6 +14,7 @@ This library implements an intuitive command system for controlling your Arduino
 
 ## Usage
 For usage, please see the LED example...
+
 In the Aruidno IDE: File -> Examples -> SerialControl -> LED
 
 ## Contributing
@@ -27,4 +29,5 @@ Please contribute to this project:
 
 ## Copyright
 Copyright 2015.
+
 Released under the MIT licence ..."Free as in free"
