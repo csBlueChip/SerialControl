@@ -2,7 +2,7 @@
 #define CMDPROCESS_H_
 
 #define CMDP_VERMAJ  1
-#define CMDP_VERMIN  1
+#define CMDP_VERMIN  2
 
 typedef
 	struct {
