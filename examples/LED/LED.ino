@@ -1,4 +1,4 @@
-#include "cmdProcess.h"
+#include "SerialControl.h"
 
 //------------------------------------------------------------------------------
 // Local system definitions
