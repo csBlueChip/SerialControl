@@ -64,6 +64,9 @@ bool  cmdSetup (cmd_t* list,  int max)
 	// Ensure all memory was allocated successfully
 	isSetup = cmd && argList && argPtr;
 
+	// Initialise the input buffer
+	cmdClear();
+
 	// Announce the system
 	Serial.print(txtLibName);
 	Serial.print(" v");
