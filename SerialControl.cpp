@@ -3,8 +3,8 @@
 //----------------------------------------------------------------------------------------------------------------------
 // Includes
 //
-#include "cmdProcess.h"
-#include "inc/cmdProcessLang.h"
+#include "SerialControl.h"
+#include "inc/SerilaControlLang.h"
 
 #include <string.h>
 #include <stdlib.h>
