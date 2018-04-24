@@ -8,18 +8,18 @@
 #define LANGUAGE LANG_EN
 
 #if LANGUAGE == LANG_EN
-	char*  cmdHelp      = "HELP";  // Must be in CAPITALS
-#	define CMD_HELPLEN  4;         // Length of HELP command
+	char*  cmdHelp      = (char*)F("HELP");  // Must be in CAPITALS
+#	define CMD_HELPLEN  4;                   // Length of HELP command
 	
-	char*  txtSetup     = "cmdSetup() not called or failed!";
-	char*  txtUnknown   = "Unknown command: ";
-	char*  txtCommands  = "Commands";
-	char*  txtListCmds  = "List available commands";
-	char*  txtCmdHelp   = " <command> : Command specific help";
-	char*  txtTooLong   = "Command too long";
-	char*  txtLibName   = "SerialCommand";
-	char*  txtSetupOK   = "Ready...";
-	char*  txtSetupFail = "setup failed!";
+	char*  txtSetup     = (char*)F("cmdSetup() not called or failed!");
+	char*  txtUnknown   = (char*)F("Unknown command: ");
+	char*  txtCommands  = (char*)F("Commands");
+	char*  txtListCmds  = (char*)F("List available commands");
+	char*  txtCmdHelp   = (char*)F(" <command> : Command specific help");
+	char*  txtTooLong   = (char*)F("Command too long");
+	char*  txtLibName   = (char*)F("SerialCommand");
+	char*  txtSetupOK   = (char*)F("Ready...");
+	char*  txtSetupFail = (char*)F("setup failed!");
 #else
 #	errror Language not defined
 #endif

@@ -69,11 +69,11 @@ bool  cmdSetup (cmd_t* list,  int max)
 
 	// Announce the system
 	Serial.print(txtLibName);
-	Serial.print(" v");
+	Serial.print(F(" v"));
 	Serial.print(CMDP_VERMIN, DEC);
-	Serial.print(".");
+	Serial.print(F("."));
 	Serial.print(CMDP_VERMAJ, DEC);
-	Serial.print(" ");
+	Serial.print(F(" "));
 	Serial.println( (isSetup) ? txtSetupOK : txtSetupFail );
 
 	return isSetup;
@@ -108,9 +108,9 @@ int  cmdExec (char* input)
 	if (input) {
 		if (strlen(input) > cmdMax) {
 			Serial.print(txtTooLong);
-			Serial.print(": \"");
+			Serial.print(F(": \""));
 			Serial.print(input);
-			Serial.println("\"");
+			Serial.println(F("\""));
 			return -1;
 		}
 		exec = input;
@@ -168,9 +168,9 @@ int  cmdExec (char* input)
 		if (!cmdp->cmd) {
 			// Announce failure
 			Serial.print(txtUnknown);
-			Serial.print("\"");
+			Serial.print(F("\""));
 			Serial.print(argPtr[0]);
-			Serial.println("\"");
+			Serial.println(F("\""));
 			// Request command list
 			argPtr[0] = cmdHelp;
 			argPtr[1] = NULL;
@@ -180,18 +180,18 @@ int  cmdExec (char* input)
 	if (strcmp(argPtr[0], cmdHelp) == 0) {                          // Request for HELP?
 		if (argPtr[1] == NULL) {                                    // Just "HELP"
 			Serial.print(txtCommands);                              // List commands
-			Serial.print(" {");                                     // List commands
+			Serial.print(F(" {"));                                  // List commands
 			Serial.print(cmdHelp);                                  // "HELP"
 			for (cmdp = cmdList;  cmdp->cmd;  cmdp++) {             //   Traverse command array
-				Serial.print(", ");                                 //     List command
+				Serial.print(F(", "));                              //     List command
 				Serial.print(cmdp->cmd);                            //     ...
 			}                                                       // 
-			Serial.println("}");                                    //   End of list
+			Serial.println(F("}"));                                 //   End of list
 		} else {                                                    // "HELP xxx"
 			for (cp = argPtr[1]; *cp;  cp++)  *cp = toupper(*cp) ;  // Uppercase the command name
 			if (strcmp(argPtr[1], cmdHelp) == 0) {                  //   "HELP HELP"?
 				Serial.print(cmdHelp);                              //     Give help overview
-				Serial.print(" : ");                                //     ...
+				Serial.print(F(" : "));                             //     ...
 				Serial.println(txtListCmds);                        //     ...
 				Serial.print(cmdHelp);                              //     ...
 				Serial.println(txtCmdHelp);                         //     ...
@@ -204,9 +204,9 @@ int  cmdExec (char* input)
 				}                                                   // 
 				if (!cmdp->cmd) {                                   //   <command> not found
 					Serial.print(txtUnknown);
-					Serial.print("\"");
+					Serial.print(F("\""));
 					Serial.print(argPtr[1]);
-					Serial.println("\"");
+					Serial.println(F("\""));
 				}                                                   
 			}
 		}
