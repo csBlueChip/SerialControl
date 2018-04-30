@@ -6,17 +6,17 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-cmd_endList	KEYWORD1
+cmd_endList  KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-cmdSetup    KEYWORD2
-cmdExec     KEYWORD2
-cmdWaiting  KEYWORD2
-cmdClear    KEYWORD2
-cmdSerial   KEYWORD2
+cmdSetup     KEYWORD2
+cmdExec      KEYWORD2
+cmdWaiting   KEYWORD2
+cmdClear     KEYWORD2
+cmdSerial    KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
