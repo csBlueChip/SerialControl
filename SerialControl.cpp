@@ -14,16 +14,16 @@
 //
 bool    isSetup = false;
 
-char*   cmd;       // Somewhere to hold the command
-int     cmdLen;    // The (current) length of the command
-int     cmdMax;    // Maximum length of a command
-bool    cmdReady;  // Command is ready to be processed
+char*         cmd;       // Somewhere to hold the command
+unsigned int  cmdLen;    // The (current) length of the command
+unsigned int  cmdMax;    // Maximum length of a command
+bool          cmdReady;  // Command is ready to be processed
 
-cmd_t*  cmdList;   // The command list
+const cmd_t*  cmdList;   // The command list
 
-int     argMax;    // Maximum nuber of arguments for a command        
-char*   argList;   // The argument list
-char**  argPtr;    // Argument pointers (to within argList)
+int           argMax;    // Maximum nuber of arguments for a command        
+char*         argList;   // The argument list
+char**        argPtr;    // Argument pointers (to within argList)
 
 //+=====================================================================================================================
 // Is the command ready to be processed
@@ -44,9 +44,9 @@ bool  cmdWaiting ( )
 //+=====================================================================================================================
 // Setup the command system
 //
-bool  cmdSetup (cmd_t* list,  int max)
+bool  cmdSetup (const cmd_t* list,  int max)
 {
-	cmd_t*  cmdp;
+	const cmd_t*  cmdp;
 
 	cmdMax = max;                    
 	cmd    = (char*)malloc(cmdMax + 1);  // Allow for NUL terminator
@@ -96,12 +96,12 @@ void  cmdClear ( )
 //
 int  cmdExec (char* input)
 {
-	int     i;
-	int     argCnt;
-	char*   cp;
-	char**  ap;
-	cmd_t*  cmdp;
-	char*   exec;
+	int           i;
+	int           argCnt;
+	char*         cp;
+	char**        ap;
+	const cmd_t*  cmdp;
+	char*         exec;
 
 	if (!isSetup)  return -1 ;
 
