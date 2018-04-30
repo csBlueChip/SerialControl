@@ -4,7 +4,7 @@
 // Includes
 //
 #include "SerialControl.h"
-#include "inc/SerilaControlLang.h"
+#include "inc/SerialControlLang.h"
 
 #include <string.h>
 #include <stdlib.h>
