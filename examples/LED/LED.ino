@@ -1,9 +1,33 @@
+//------------------------------------------------------------------------------
+// Cross-platform compatability
+//
+#ifndef STDIO
+#  include <variant.h>
+#  if defined(_VARIANT_MACCHINA_M2_)
+#    define  STDIO  SerialUSB
+#  else
+#    define  STDIO  Serial
+#  endif
+#endif
+
+//------------------------------------------------------------------------------
+// You need this to use the SerialControl library
+//
 #include "SerialControl.h"
 
 //------------------------------------------------------------------------------
 // Local system definitions
 //
-#define  ledPin  3   // Pin number for LED (must be a PWM pin for "PULSE")
+#define  ledPin  LED_BUILTIN  // Pin number for LED (must be a PWM pin for "PULSE")
+
+//------------------------------------------------------------------------------
+// You must add an entry here for each command you write
+//
+int  ledOn    (int argc,  char* argv[]) ;
+int  ledOff   (int argc,  char* argv[]) ;
+int  ledDim   (int argc,  char* argv[]) ;
+int  ledPulse (int argc,  char* argv[]) ;
+int  showArgs (int argc,  char* argv[]) ;
 
 //------------------------------------------------------------------------------
 // Command System
@@ -15,7 +39,7 @@
 //                   Must be enclosed in "quotes"
 //   functionName .. The name of the function that will be called for this command
 //                   It must have the function prototype:
-//                      int functionName(int argc, char* argv[])
+//                      int functionName (int argc,  char* argv[])
 //   minArg       .. The minimum number of arguments that are allowed
 //   maxArg       .. The maximum number of arguments that are allowed
 //   "Help Text"  .. What the Arduino will display if you say: HELP COMMAND
@@ -33,6 +57,7 @@ cmd_t  commands[] = {
     {"OFF",   ledOff,   0,0, "Turn LED off"},
     {"DIM",   ledDim,   1,1, "DIM <brightness> : Dim LED. brightness=0..255"},
     {"PULSE", ledPulse, 0,2, "PULSE [<pulses> [<speed>]] : Pulse LED. pulses=nr of pulses, speed=0[fast]..1000[slow]"},
+    {"ARGS",  showArgs, 0,9, "ARGS {up to nine arguments}"},
     cmd_endList  // This MUST always be the last entry in the command list
 };
 
@@ -42,32 +67,52 @@ cmd_t  commands[] = {
 void  setup ( ) 
 {
     pinMode(ledPin, OUTPUT);          // Set the LED control pin to OUTPUT
-	
-    Serial.begin(9600);               // Talk to the PC at 9600 baud
+  
+    STDIO.begin(115200);              // Talk to the PC at 115200 baud
+    while (!STDIO)  delay(10) ;       // Wait for the user to connect to the serial port
+    
     if (!cmdSetup(commands, cmdMax))  // Try to setup the command system
         while (1)  delay(1000) ;      // If we failed, hang here!
+        
     cmdExec("ON");                    // Issue a direct command
 }
 
 //+=============================================================================
-//  The main monitoring loop
+// The main monitoring loop
 //
 void  loop ( ) 
 {
     if (cmdWaiting()) {            // Is there a command waiting?
-        Serial.print(":");         //   Announce the command we received
-        Serial.println(cmdGet());  //   ...
+        STDIO.print(":");          //   Announce the command we received
+        STDIO.println(cmdGet());   //   ...
         cmdExec(NULL);             //   Execute the captured command
         cmdClear();                //   Prepare for the next serial command
     }
+    serialEvent();                 // You SHOULD never need this
 }
 
 //+=============================================================================
-//  This is called every time the loop() ends
+// This is [should be] called every time the loop() ends
+// If things aren't going well, uncomment the call at the end of loop()
 //
 void  serialEvent ( ) 
 {
-  cmdSerial();  // Use the serial command grabber
+    cmdSerial();  // Use the serial command grabber
+}
+
+//+=============================================================================
+// Show the arguments as received (test & debug)
+//
+int  showArgs (int argc,  char* argv[])
+{
+    STDIO.print(F("Count: "));
+    STDIO.println(argc, DEC);
+    for (int i = 0;  i < argc;  i++) {
+        STDIO.print(i, DEC);
+        STDIO.print(F(" : |"));
+        STDIO.print(argv[i]);
+        STDIO.println(F("|"));
+    }
 }
 
 //+=============================================================================
@@ -116,11 +161,11 @@ int  ledPulse (int argc,  char* argv[])
     // (as an ASCII string) and we convert it to an integer
     if (argc == 2)  speed = atoi(argv[2]);
     
-    Serial.print("Pulsing, please wait: ");
+    STDIO.print("Pulsing, please wait: ");
 
     for ( ;  cnt > 0;  cnt--) {
-        Serial.print(cnt, DEC);
-        Serial.print(".");
+        STDIO.print(cnt, DEC);
+        STDIO.print(".");
       
         // Fade in
         step = 0;
@@ -129,7 +174,7 @@ int  ledPulse (int argc,  char* argv[])
             delay(speed);
         } 
 
-        Serial.print(".");
+        STDIO.print(".");
 
         // Fade out
         for (dim = 510;  dim >= 1;  dim -= step, step -= 1) {
@@ -140,5 +185,5 @@ int  ledPulse (int argc,  char* argv[])
 
     // Finish with LED=off
     digitalWrite(ledPin, LOW);  
-    Serial.println("Done.");
+    STDIO.println("Done.");
 }

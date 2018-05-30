@@ -21,7 +21,7 @@
 	char*  txtSetupOK   = (char*)"Ready...";
 	char*  txtSetupFail = (char*)"setup failed!";
 #else
-#	errror Language not defined
+#	error Language not defined
 #endif
 
 #endif // SERIALCONTROLLANG_H_

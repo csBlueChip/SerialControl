@@ -2,6 +2,12 @@
 This library implements an intuitive command system for controlling your Arduino from your PC via the built-in Serial Monitor or an external terminal emulator ...It is simple and quick to configure; implements a full HELP system; and comes with a simple example which has a set of commands to remotely control the brightness of an LED ...The code is well structured and commented throughout to make forking easy - if you come up with something cool, please do a pull request :)
 
 ## Version History
+2.2 First off, I fixed the version numbering bug [slap]
+    More cross-platform cleanup
+	Added Serial redirection via STDIO macro 
+	Arguments with a quote as the first (and last) character MAY contain spaces
+	...quoted arguments can NOT contain quotes [for now]
+
 1.3 Cross-platform casting issues; reorginse repo to match new layout; fix typo in filename!
 
 1.2 Clear command buffer at startup
